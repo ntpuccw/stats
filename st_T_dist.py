@@ -17,7 +17,7 @@ norm_y = norm.pdf(x) # Z
 
 
 dof = st.slider('Degree of Freedom', min_value=n[0], max_value=n[-1], value=n[10], step=1)
-st.write("T(", df[dof],")")
+st.write("T(", np.round(df[dof],1),")")
 y = t.pdf(x, df[dof])
 #----- use matplotlib to draw graphs ----------------
 fig = plt.figure(figsize=(6,3))
