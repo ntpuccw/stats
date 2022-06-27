@@ -6,7 +6,6 @@ import plotly.graph_objects as go
 from scipy.stats import t, norm
 import streamlit as st
 import numpy as np
-import time
 
 df1 = np.linspace(0.1, 1, 10)
 df2 = np.arange(2, 31)
