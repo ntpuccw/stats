@@ -1,6 +1,6 @@
 # From "streamlit hello"
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from scipy.stats import t, norm
@@ -11,21 +11,24 @@ df1 = np.linspace(0.1, 1, 10)
 df2 = np.arange(2, 31)
 df = np.hstack((df1, df2))
 n = range(len(df))
-
-dof = st.slider('Degree of Freedom', min_value=n[0], max_value=n[-1], value=n[10], step=1)
-st.write("T(", df[dof],")")
-
-#----- use matplotlib to draw graphs ----------------
 x = np.linspace(-8, 8, 1000)
-fig = plt.figure(figsize=(6,3))
+dof = 10
 norm_y = norm.pdf(x) # Z
-plt.plot(x, norm_y, color = 'r', label = "Z")
 y = t.pdf(x, df[dof])
-plt.plot(x, y, color = 'b', alpha = 0.5, label = "T("+ str(df[dof])+")")
-# plt.title('$\sqrt{x}$')
-plt.legend()
 
-st.pyplot(fig)
+# dof = st.slider('Degree of Freedom', min_value=n[0], max_value=n[-1], value=n[10], step=1)
+# st.write("T(", df[dof],")")
+
+# #----- use matplotlib to draw graphs ----------------
+# fig = plt.figure(figsize=(6,3))
+# norm_y = norm.pdf(x) # Z
+# plt.plot(x, norm_y, color = 'r', label = "Z")
+# y = t.pdf(x, df[dof])
+# plt.plot(x, y, color = 'b', alpha = 0.5, label = "T("+ str(df[dof])+")")
+# # plt.title('$\sqrt{x}$')
+# plt.legend()
+
+# st.pyplot(fig)
 
 #---- Use plotly to draw lines -------------
 # fig2 = px.line(x = x, y = [norm_y, y]) # two lines
