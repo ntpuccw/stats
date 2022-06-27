@@ -25,8 +25,9 @@ plt.plot(x, norm_y, color = 'r', label = "Z")
 plt.plot(x, y, color = 'b', alpha = 0.5, label = "T("+ str(np.round(df[dof],1))+")")
 # plt.title('$\sqrt{x}$')
 plt.legend()
-
-st.pyplot(fig)
+col1, col2, clo3 = st.columns((1,2,1))
+with col2:
+    st.pyplot(fig)
 
 #---- Use plotly to draw lines -------------
 # fig2 = px.line(x = x, y = [norm_y, y]) # two lines
