@@ -15,7 +15,7 @@ x = np.linspace(-8, 8, 1000)
 # dof = 10
 norm_y = norm.pdf(x) # Z
 
-
+st.subheader('T distribution')
 dof = st.slider('Degree of Freedom', min_value=n[0], max_value=n[-1], value=n[10], step=1)
 st.write("T(", np.round(df[dof],1),")")
 y = t.pdf(x, df[dof])
