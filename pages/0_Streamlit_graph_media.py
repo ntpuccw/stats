@@ -6,6 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
+
 #-------------------------------------------
 st.markdown("### st.line_chart")
 n = 100
@@ -51,6 +52,7 @@ st.pyplot(fig)
 '''
     st.code(code, language='python')
 st.write('---')
+
 # ----------------------------------------
 st.markdown("### plotly graph_objects+ st.plotly_chart")
 st.latex(r'f(x) = \frac{4}{\pi}\left(\sin x+\frac{\sin 3x}{3}+\frac{\sin 5x}{5}+\frac{\sin 7x}{7}+\cdots\right)')
@@ -125,9 +127,9 @@ for i in range(int(terms)):
     y += 4/np.pi*np.sin((2*i+1)*x)/(2*i+1)
     df = pd.concat([df, pd.DataFrame([x, y, i*np.ones(n)]).T])
 
-df.columns= ['x', 'y', 'k']
+df.columns= ['x', 'y', 'num_terms']
 # st.write(df)
-fig = px.line(df, x='x', y = 'y', animation_frame= 'k',
+fig = px.line(df, x='x', y = 'y', animation_frame= 'num_terms',
     range_x = [np.min(x) - 1.5, np.max(x) + 1.5], 
     range_y = [-2.5, 2.5])
 # st.write(fig)
