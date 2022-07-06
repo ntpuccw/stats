@@ -11,22 +11,22 @@ from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 st.markdown('### 獨立性檢定')
 c1, c2 = st.columns(2)
 with c1:
-    col = st.number_input('Columns（輸入獨立變數個數）:', min_value=2, max_value=10, value=3, step=1)
+    col = st.number_input('Columns（輸入解釋變數個數）:', min_value=2, max_value=10, value=3, step=1)
     col_names = ["col{}".format(i+1) for i in range(int(col))]
     # col_names = ["col1", "col2", "col3"]
     # user_def_col = ""
     # for s in col_names:
     #     user_def_col += s +',' 
     user_def_col = ",".join(col_names) # join to col1,col2,clo3
-    tmp = st.text_area('輸入獨立變數名稱（以逗點 , 分隔）: ', user_def_col, height=80)
+    tmp = st.text_area('輸入解釋變數名稱（以逗點 , 分隔）: ', user_def_col, height=80)
     col_names = str(tmp).split(',')
 
 with c2:
-    row = st.number_input('Rows（輸入因變數個數）:', min_value=2, max_value=10, value=2, step=1)
+    row = st.number_input('Rows（輸入反應變數個數）:', min_value=2, max_value=10, value=2, step=1)
     row_names = ["row{}".format(i+1) for i in range(int(row))]
     # row_names = ["row1", "row2"]
     user_def_row = ",".join(row_names)
-    tmp = st.text_area('輸入因變數名稱（以逗點 , 分隔）: ', user_def_row, height=80)
+    tmp = st.text_area('輸入反應變數名稱（以逗點 , 分隔）: ', user_def_row, height=80)
     row_names = str(tmp).split(',')
 
 
