@@ -123,6 +123,11 @@ df.loc[0:3]
 st.write('df.loc[0:3]', df.loc[0:3])
 st.write('df[["col2", "col3"]].loc[0:2]', df[["col2", "col3"]].loc[0:2])
 st.write('df.iloc[0:3, 0:4]', df.iloc[0:3, 0:4])
+# st.text(df)
+D = df.values.astype(int)
+st.text('''
+D = df.values.astype(int)''')
+st.text(D)
 st.write('---')
 
 st.subheader("Editable Grids")
