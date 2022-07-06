@@ -9,10 +9,29 @@ from scipy.stats import chi2_contingency
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder # pip install streamlit-aggrid
 
 st.markdown('### 獨立性檢定')
+uploaded_file = st.file_uploader("Choose an Excel file")
+if uploaded_file:
+    df = pd.read_excel(uploaded_file)
+    # st.write(df)
+    row, col = df.shape
+    df.rename(columns = {'Unnamed: 0':'/'}, inplace = True)
+    col_names = [df.columns[i+1] for i in range(col-1)]
+    row_names = [df['/'][i] for i in range(row)]
+    data = df.values[:,1:]
+    # st.text(data)
+    # st.text(col_names)
+    # st.text(row_names)
+    
 c1, c2 = st.columns(2)
 with c1:
-    col = st.number_input('Columns（輸入解釋變數個數）:', min_value=2, max_value=10, value=3, step=1)
-    col_names = ["col{}".format(i+1) for i in range(int(col))]
+    col_init = col-1 if 'col' in locals() else 3
+    # if 'col' in locals():
+    #     col_init = col-1
+    # else:
+    #     col_init = 3
+    col = st.number_input('Columns（輸入解釋變數個數）:', min_value=2, max_value=10, value=col_init , step=1)
+    if not uploaded_file:
+        col_names = ["col{}".format(i+1) for i in range(int(col))]
     # col_names = ["col1", "col2", "col3"]
     # user_def_col = ""
     # for s in col_names:
@@ -22,15 +41,18 @@ with c1:
     col_names = str(tmp).split(',')
 
 with c2:
-    row = st.number_input('Rows（輸入反應變數個數）:', min_value=2, max_value=10, value=2, step=1)
-    row_names = ["row{}".format(i+1) for i in range(int(row))]
+    row_init = row if 'row' in locals() else 2
+    row = st.number_input('Rows（輸入反應變數個數）:', min_value=2, max_value=10, value=row_init, step=1)
+    if not uploaded_file:
+        row_names = ["row{}".format(i+1) for i in range(int(row))]
     # row_names = ["row1", "row2"]
     user_def_row = ",".join(row_names)
     tmp = st.text_area('輸入反應變數名稱（以逗點 , 分隔）: ', user_def_row, height=80)
     row_names = str(tmp).split(',')
 
 
-data = np.ones((int(row), int(col)), dtype = float)
+if not uploaded_file:
+    data = np.ones((int(row), int(col)), dtype = float)
 df = pd.DataFrame(data, columns = col_names)
 df.insert(0, '/', row_names)
 # st.write(df)

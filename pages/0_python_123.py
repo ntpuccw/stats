@@ -66,6 +66,19 @@ st.text('np.hstack((a.T, b.T)) ==> ' + str(np.hstack((a.T, b.T))))
 st.text('np.c_[a.T, b.T] ==> ' + str(np.c_[a.T, b.T]))
 # st.text([a,b, np.ones(3)])
 st.write('---')
+#--------------------------------------------------------
+st.markdown("#### String manipulatipns")
+col_names = ["col1", "col2", "col3"]
+st.write("col_names = ['col1', 'col2', 'col3']")
+st.text(col_names)
+col_names_join = ",".join(col_names)
+st.write("col_names_join = ','.join(col_names)")
+st.text(col_names_join)
+col_names_split = col_names_join.split(',')
+st.write("col_names_split = col_names_join.split(',')")
+st.text(col_names_split)
+#--------------------------------------------------------
+st.write('---')
 st.markdown("#### Pandas dataframe basics")
 A = [[1,2,3,4], [5,6,7,8], [9,10,11,12]]
 st.text('A = [[1,2,3,4], [5,6,7,8], [9,10,11,12]]')
