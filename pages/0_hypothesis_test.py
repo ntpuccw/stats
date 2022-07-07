@@ -14,7 +14,7 @@ st.markdown('''
 ###### [下載示範 EXCEL 檔](https://github.com/ntpuccw/stats/blob/master/data/hypothesis_excel.xlsx)
 ''')
 
-uploaded_file = st.file_uploader("Choose an Excel file")
+uploaded_file = st.file_uploader("Choose an Excel file（檔案格式必須與示範的 EXCEL 檔相同）")
 if uploaded_file:
     df = pd.read_excel(uploaded_file)
     # st.write(df)
@@ -131,5 +131,5 @@ with c1:
 with c2:
         st.write('Expected frequency:', np.round(expected, 2))
 st.write('---')
-st.markdown('### Example:')
+st.markdown('### Example: EXCEL 檔格式')
 st.image('hypothesis_example.png')

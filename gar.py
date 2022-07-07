@@ -24,10 +24,6 @@
 
 # fig.show()
 # 
-l = [ 'Hardik','Rohit', 'Rahul', 'Virat', 'Pant']
-  
-# replace first value
-l[0] = 'Shardul'
-  
-# print list
-print(l)
+a=[1,2,3,4,5,6]
+
+print(a>3)
