@@ -9,7 +9,10 @@ import pandas as pd
 from scipy.stats import chi2_contingency
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder # pip install streamlit-aggrid
 
-st.markdown('### 獨立性檢定')
+st.markdown('''
+### 獨立性檢定
+###### [下載示範的 EXCEL 檔](hypothesis_excel.xslx)
+''')
 uploaded_file = st.file_uploader("Choose an Excel file")
 if uploaded_file:
     df = pd.read_excel(uploaded_file)
