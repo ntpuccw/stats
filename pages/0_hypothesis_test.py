@@ -2,6 +2,7 @@
 # need to  "pip install streamlit-aggrid"
 
 
+from matplotlib import container
 import numpy as np
 import streamlit as st
 import pandas as pd
@@ -18,9 +19,7 @@ if uploaded_file:
     col_names = [df.columns[i+1] for i in range(col-1)]
     row_names = [df['/'][i] for i in range(row)]
     data = df.values[:,1:]
-    # st.text(data)
-    # st.text(col_names)
-    # st.text(row_names)
+    
     
 c1, c2 = st.columns(2)
 with c1:
@@ -117,12 +116,16 @@ chi2, p, dof, expected = chi2_contingency(D)
 # df_res.loc[len(df_res)] = df_res.iloc[0:len(row_names)+1, 1:len(col_names)+2].sum(axis=0)#['sum',3,3,3,3]
 # df_res.iloc[len(df_res)-1,0]='Sum'
 st.write(df_res)
-st.write(f'''
-Chi2 statistic = {np.round(chi2,2)} \n
-p-value = {np.round(p, 2)} \n
-dof = {dof} 
-''')
-st.write('Expected frequency:', np.round(expected, 2))
+st.markdown('#### Test Results:')
+c1, c2 = st.columns(2)
+with c1:
+        st.write(f'''
+        Chi2 statistic = {np.round(chi2,2)} \n
+        p-value = {np.round(p, 2)} \n
+        dof = {dof} 
+        ''')
+with c2:
+        st.write('Expected frequency:', np.round(expected, 2))
 st.write('---')
 st.markdown('### Example:')
 st.image('hypothesis_example.png')
