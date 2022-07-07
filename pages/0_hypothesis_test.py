@@ -11,8 +11,9 @@ from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 
 st.markdown('''
 ### 獨立性檢定
-###### [下載示範的 EXCEL 檔](./data/hypothesis_excel.xslx)
+###### [下載示範 EXCEL 檔](https://github.com/ntpuccw/stats/blob/master/data/hypothesis_excel.xlsx)
 ''')
+
 uploaded_file = st.file_uploader("Choose an Excel file")
 if uploaded_file:
     df = pd.read_excel(uploaded_file)
