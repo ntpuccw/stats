@@ -59,3 +59,7 @@ fig_box2 = px.box(df, y=boxplot_vars, color = 'hcol')
 fig_box2.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
 st.plotly_chart(fig_box2)
 
+fig_box3 = px.box(df, y=boxplot_vars, color = 'rad')
+fig_box3.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+st.plotly_chart(fig_box3)
+
