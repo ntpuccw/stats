@@ -32,8 +32,6 @@ with col2:
 #---- Use plotly to draw lines -------------
 # fig2 = px.line(x = x, y = [norm_y, y]) # two lines
 fig2 = px.line(x = x, y = y, title='T distribution')
-# st.write(fig2)
-
 st.plotly_chart(fig2)
 
 # ----- Use plotly to draw lines with various attributes ----

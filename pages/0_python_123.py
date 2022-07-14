@@ -77,6 +77,13 @@ st.text(col_names_join)
 col_names_split = col_names_join.split(',')
 st.write("col_names_split = col_names_join.split(',')")
 st.text(col_names_split)
+st.text('------------------------------------------------')
+a_sentence = "台北大學統計系"
+st.write('a_sentence = "台北大學統計系"')
+st.write("a_sentence.find('統計') --> " + str(a_sentence.find('統計')) )
+st.write("a_sentence.find('會計') --> " + str(a_sentence.find('會計')) )
+
+
 #--------------------------------------------------------
 st.write('---')
 st.markdown("#### Pandas dataframe basics")
@@ -142,7 +149,29 @@ st.text('''
 D = df.values.astype(int)''')
 st.text(D)
 st.write('---')
+st.subheader("Miscellaneous")
+x = []
+st.write('x = []    # x is a empty list')
+st.write("not x --> ", not x)
+st.write("x is none --> ", x is None)
+st.text("# Check whether variable x is defined or not")
+st.write("'x' in locals() --> ", 'x' in locals())
+st.write('---')
 
+col1, col2 = st.columns(2)
+with col1:
+    st.text('''
+if flag == 1:
+    status = "play"
+else:
+    status = "stop"
+    ''')
+with col2:
+    st.text('''
+    status = "play" if flag ==1 else "stop"
+    ''')
+
+st.write('---')
 st.subheader("Editable Grids")
 c1, c2 = st.columns(2)
 with c1:

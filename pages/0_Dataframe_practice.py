@@ -3,7 +3,8 @@ import pandas as pd
 import plotly.express as px
 from st_aggrid import AgGrid
 
-st.set_page_config(page_title="DataFrame Demo", page_icon="")
+# emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
+st.set_page_config(page_title="DataFrame Practice", page_icon=":smile:")
 
 st.markdown("# DataFrame Practice")
 st.write(
@@ -12,10 +13,26 @@ st.write(
 
 df = pd.read_csv("Boston.csv")
 row, col = df.shape
-st.text(f"共 {col} 個變數 {row} 筆資料")
+st.text(f"共 {col} 個變數 {row} 筆資料（可在左邊的多重選項篩選欲觀察的資料）")
 col_names = [df.columns[i] for i in range(col)]
-
-# st.write(df)
+#---------------------------------------------------------
+hcol = st.sidebar.multiselect(
+    "選擇 h-color 展示資料:",
+    options = df["hcol"].unique(),
+    default = df["hcol"].unique()
+)
+rad = st.sidebar.multiselect(
+    "選擇 rad 值:",
+    options = df["rad"].unique(),
+    default = df["rad"].unique()
+)
+df_select = df.query(
+    "hcol == @hcol & rad == @rad"
+)
+st.dataframe(df_select)
+#-------------------------------------------------------------
+st.markdown('---')
+st.subheader(":memo: Use AgGrid for customized table")
 colDefs = []
 for i in range(int(col)):
     colDefs.append({
@@ -31,6 +48,9 @@ grid_options = {"columnDefs": colDefs}
 grid_return1 = AgGrid(df, grid_options, height = 400, 
     theme = "blue") # ["streamlit", "light", "dark", "blue", "fresh", "material"]
 
+
+#---------------------------------------------------------
+st.markdown('---')
 # st.bar_chart(df[col_names[:]])
 fig_pie = px.pie(df, names = 'hcol', title='類別型變數 hcol', hole = 0.3)
 # st.write(pie_fig)
