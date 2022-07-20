@@ -69,17 +69,38 @@ st.plotly_chart(fig_scatter)
 fig_scatter_all = px.scatter_matrix(df, width = 1200, height = 1200,
     color = 'hcol')
 st.plotly_chart(fig_scatter_all)
-
+st.write('---')
+st.subheader("Boxplot")
 boxplot_vars = st.multiselect('Select variables for boxplot(s):', col_names, ['medv'])
-fig_box = px.box(df, y=boxplot_vars, points="all", notched=True)
-fig_box.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
-st.plotly_chart(fig_box)
+# fig_box = px.box(df, y=boxplot_vars, points="all", notched=True)
+# fig_box.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+# st.plotly_chart(fig_box)
 
-fig_box2 = px.box(df, y=boxplot_vars, color = 'hcol')
-fig_box2.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
-st.plotly_chart(fig_box2)
+# fig_box2 = px.box(df, y=boxplot_vars, color = 'hcol')
+# fig_box2.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+# st.plotly_chart(fig_box2)
 
-fig_box3 = px.box(df, y=boxplot_vars, color = 'rad')
-fig_box3.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
-st.plotly_chart(fig_box3)
+# fig_box3 = px.box(df, y=boxplot_vars, color = 'rad')
+# fig_box3.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+# st.plotly_chart(fig_box3)
 
+
+tab1, tab2, tab3 = st.tabs(["All data", "By hcol", "By rad"])
+
+with tab1:
+    st.markdown("##### Boxplot by all data")
+    fig_box = px.box(df, y=boxplot_vars, points="all", notched=True)
+    fig_box.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+    st.plotly_chart(fig_box)
+
+with tab2:
+    st.markdown("##### Boxplot by hcol")
+    fig_box2 = px.box(df, y=boxplot_vars, color = 'hcol')
+    fig_box2.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+    st.plotly_chart(fig_box2)
+
+with tab3:
+    st.markdown("##### Boxplot by rad")
+    fig_box3 = px.box(df, y=boxplot_vars, color = 'rad')
+    fig_box3.update_traces(quartilemethod="exclusive") # or "inclusive", or "linear" by default     
+    st.plotly_chart(fig_box3)
