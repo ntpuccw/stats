@@ -33,6 +33,7 @@ for i in range(10):
     y += np.sin((2*i+1) * x) / (2*i+1)
     plt.plot(x, 4 / np.pi * y, color = 'b')
     plt.ylim([-3, 3])
+plt.xlabel('x 軸')
 
 col1, col2, col3= st.columns((1,4,1))
 with col2:
