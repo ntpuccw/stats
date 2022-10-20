@@ -73,7 +73,7 @@ for k in N:
             visible=False,
             line=dict(color="#00CED1", width=1),
             name="k = " + str(k),
-            title= 'A squared wave',
+            # title= 'A squared wave',
             x=x,
             y=y))
 
