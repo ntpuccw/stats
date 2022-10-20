@@ -52,7 +52,7 @@ fig3.add_trace(go.Scatter(x=x, y=y,
                     line=dict(color='royalblue', width=4)))
 
 fig3.update_layout(title='T distribution with various degree of freedoms',
-                   xaxis_title='x-axis',
+                   xaxis_title='x-axis 軸',
                    yaxis_title='y-axis', font_family="Arial")
 
 st.plotly_chart(fig3)
