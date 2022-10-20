@@ -1,6 +1,7 @@
 # From "streamlit hello"
 
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as mfm
 import plotly.express as px
 import plotly.graph_objects as go
 from scipy.stats import t, norm
@@ -21,10 +22,12 @@ st.write("T(", np.round(df[dof],1),")")
 y = t.pdf(x, df[dof])
 #----- use matplotlib to draw graphs ----------------
 fig = plt.figure(figsize=(6,3))
-plt.plot(x, norm_y, color = 'r', label = "Z")
+plt.plot(x, norm_y, color = 'r', label = "Z 分配")
 plt.plot(x, y, color = 'b', alpha = 0.5, label = "T("+ str(np.round(df[dof],1))+")")
 # plt.title('$\sqrt{x}$')
-plt.legend()
+font_path = "C:\WINDOWS\FONTS\MSJHL.TTC" # 微軟正黑體
+prop = mfm.FontProperties(fname = font_path)
+plt.legend(prop=prop)
 col1, col2, clo3 = st.columns((1,2,1))
 with col2:
     st.pyplot(fig)
@@ -54,8 +57,8 @@ fig3.add_trace(go.Scatter(x=x, y=y,
                     line=dict(color='royalblue', width=4)))
 
 fig3.update_layout(title='T distribution with various degree of freedoms',
-                   xaxis_title='x',
-                   yaxis_title='y')
+                   xaxis_title='x-axis 軸',
+                   yaxis_title='y-axis', font_family="Arial")
 
 st.plotly_chart(fig3)
 
