@@ -108,7 +108,8 @@ fig4.update_xaxes(range=(xm,xM))
 fig4.update_yaxes(range=(ym,yM))
 fig4.update_layout(
     sliders=sliders,
-    title = 'Squared wave'
+    title = 'Squared wave',
+    title_font_family="Times New Roman"
     # showlegend=False
 )
 
