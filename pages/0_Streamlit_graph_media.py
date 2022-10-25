@@ -220,11 +220,11 @@ st.plotly_chart(fig)
 st.write('---')
 # -----------------------------------------
 st.markdown("### st.camera_input + st.image")
-st.write('暫時關閉')
-# picture = st.camera_input("Take a picture")
+# st.write('暫時關閉')
+picture = st.camera_input("Take a picture")
 
-# if picture:
-#      st.image(picture)
+if picture:
+     st.image(picture)
 st.write('---')
 # -----------------------------------------
 st.markdown("### st.video")
