@@ -227,6 +227,7 @@ picture = st.camera_input("Take a picture")
 if picture:
     st.image(picture)
     img = Image.open(picture)
+    img.save('picture.jpg')
     img_array = np.array(img)
     st.write(img_array.shape)
 
