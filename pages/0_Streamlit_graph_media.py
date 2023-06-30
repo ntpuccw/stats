@@ -5,6 +5,7 @@ import matplotlib.pylab as plt
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+from PIL import Image
 
 
 #-------------------------------------------
@@ -224,7 +225,11 @@ st.markdown("### st.camera_input + st.image")
 picture = st.camera_input("Take a picture")
 
 if picture:
-     st.image(picture)
+    st.image(picture)
+    img = Image.open(picture)
+    img_array = np.array(img)
+    st.write(img_array.shape)
+
 st.write('---')
 # -----------------------------------------
 st.markdown("### st.video")
