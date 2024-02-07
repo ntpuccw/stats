@@ -46,7 +46,7 @@ for i in range(int(col)):
         })
 grid_options = {"columnDefs": colDefs}
 grid_return1 = AgGrid(df, grid_options, height = 400, 
-    theme = "blue") # ["streamlit", "light", "dark", "blue", "fresh", "material"]
+    theme = "streamlit") # ["streamlit", "light", "dark", "blue", "fresh", "material"]
 
 
 #---------------------------------------------------------

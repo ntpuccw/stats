@@ -98,7 +98,7 @@ grid_options = {"columnDefs": colDefs
 }
 st.text('直接在表格內輸入數據')
 grid_return1 = AgGrid(df, grid_options, height = 200, 
-    theme = "blue") # ["streamlit", "light", "dark", "blue", "fresh", "material"]
+    theme = "streamlit") # ["streamlit", "light", "dark", "blue", "fresh", "material"]
 df_res = pd.DataFrame(grid_return1['data'])
 
 D = df_res.values[:,1:]
