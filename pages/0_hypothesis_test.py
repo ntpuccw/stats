@@ -1,6 +1,10 @@
-# This program uses AgGrid for an editable Table in streamit.
+# Description: This program uses AgGrid for an editable Table in streamit.
 # need to  "pip install streamlit-aggrid"
-
+''' 
+Objective: This program is to create an app to 
+    perform hypothesis testing for independence of 
+    two categorical variables.
+'''
 
 from matplotlib import container
 import numpy as np
@@ -12,7 +16,8 @@ from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 st.markdown('''
 ### 獨立性檢定
 ###### [下載示範 EXCEL 檔](https://github.com/ntpuccw/stats/blob/master/data/hypothesis_excel.xlsx)
-''')
+先下載示範檔案並觀察格式，再上傳自己的 EXCEL 檔案進行獨立性檢定。
+            ''')
 
 uploaded_file = st.file_uploader("Choose an Excel file（檔案格式必須與示範的 EXCEL 檔相同）")
 if uploaded_file:
@@ -24,16 +29,16 @@ if uploaded_file:
     row_names = [df['/'][i] for i in range(row)]
     data = df.values[:,1:]
     
-    
+# create a two-column layout
 c1, c2 = st.columns(2)
 with c1:
-    col_init = col-1 if 'col' in locals() else 3
+    col_init = col-1 if 'col' in locals() else 3 # if col is defined, then col_init = col-1, else col_init = 3
     # if 'col' in locals():
     #     col_init = col-1
     # else:
     #     col_init = 3
-    col = st.number_input('Columns（輸入解釋變數個數）:', min_value=2, max_value=10, value=col_init , step=1)
-    if not uploaded_file:
+    col = st.number_input('Columns（輸入解釋變數個數 >=2, <=10）:', min_value=2, max_value=10, value=col_init , step=1)
+    if not uploaded_file: # if uploaded_file is not defined
         col_names = ["col{}".format(i+1) for i in range(int(col))]
     # col_names = ["col1", "col2", "col3"]
     # user_def_col = ""
@@ -45,7 +50,7 @@ with c1:
 
 with c2:
     row_init = row if 'row' in locals() else 2
-    row = st.number_input('Rows（輸入反應變數個數）:', min_value=2, max_value=10, value=row_init, step=1)
+    row = st.number_input('Rows（輸入反應變數個數 >=2, <=10）:', min_value=2, max_value=10, value=row_init, step=1)
     if not uploaded_file:
         row_names = ["row{}".format(i+1) for i in range(int(row))]
     # row_names = ["row1", "row2"]
@@ -55,7 +60,7 @@ with c2:
 
 
 if not uploaded_file:
-    data = np.ones((int(row), int(col)), dtype = float)
+    data = np.ones((int(row), int(col)), dtype = float) # create a 2D array with all elements = 1
 df = pd.DataFrame(data, columns = col_names)
 df.insert(0, '/', row_names)
 # st.write(df)
