@@ -135,6 +135,15 @@ with c1:
         ''')
 with c2:
         st.write('Expected frequency:', np.round(expected, 2))
+
+if st.button('Save the results to an EXCEL file'):
+     st.write(df_res)
+     # write the result to an EXCEL file 
+    #  df_new = df_res.copy()        
+     df_new = df_res.iloc[0:len(row_names), 0:len(col_names)]
+     df_new.to_excel('hypothesis_test_new.xlsx', index = False)
+     st.write('The results are saved as hypothesis_test_new.xlsx')
+
 st.write('---')
 st.markdown('### Example: EXCEL 檔格式')
 st.image('hypothesis_example.png')
