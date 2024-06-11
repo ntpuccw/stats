@@ -10,6 +10,7 @@ from matplotlib import container
 import numpy as np
 import streamlit as st
 import pandas as pd
+import io
 from scipy.stats import chi2_contingency
 from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder # pip install streamlit-aggrid
 
@@ -141,8 +142,27 @@ if st.button('Save the results to an EXCEL file'):
      # write the result to an EXCEL file 
     #  df_new = df_res.copy()        
      df_new = df_res.iloc[0:len(row_names), 0:len(col_names)]
-     df_new.to_excel('hypothesis_test_new.xlsx', index = False)
+     csv = df_new.to_csv(index = False)
      st.write('The results are saved as hypothesis_test_new.xlsx')
+    # Create a download button with the CSV data
+     st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name="data.csv",
+        mime="text/csv",
+     )
+     
+
+    # Download button for Excel
+    #  buffer = io.BytesIO()
+    #  with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    #     df.to_excel(writer, sheet_name='Sheet1', index=False)
+    #     download_excel = st.download_button(
+    #         label="Download data as Excel",
+    #         data=buffer,
+    #         file_name='hypothesis_test_new.xlsx',
+    #         mime='application/vnd.ms-excel'
+    #     )
 
 st.write('---')
 st.markdown('### Example: EXCEL 檔格式')
